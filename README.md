@@ -1,24 +1,33 @@
-# poecahontas_front
+# POECAHONTAS FRONT
+
+En apesanteur le Musk du raton n'a pas d'odeur
+
+![Logo](src/assets/logo.png)
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).

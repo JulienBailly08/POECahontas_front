@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div v-if="waitDatas">TEST</div>
+
+  <div v-if="!waitDatas">
     <h1>Liste des clients</h1>
     <hr />
     <table>
@@ -37,13 +39,16 @@ export default {
   name: "ClientListView",
   data: function () {
     return {
+      waitDatas: Boolean,
       ClientsList: [],
     };
   },
   mounted() {
+    this.waitDatas = true;
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((res) => res.json())
       .then((data) => {
+        this.waitDatas = false;
         this.ClientsList.push(...data);
       });
   },

@@ -28,6 +28,8 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
+### Docs/Manuels
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[Librairie d'icones animées](https://epic-spinners.epicmax.co/).
+
+[CLI Vue](https://cli.vuejs.org/config/).

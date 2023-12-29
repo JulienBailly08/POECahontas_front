@@ -1,5 +1,11 @@
 <template>
-  <div v-if="waitDatas">TEST</div>
+  <div v-if="waitDatas">
+    <trinity-rings-spinner
+      :animation-duration="1500"
+      :size="200"
+      color="#42b983"
+    />
+  </div>
 
   <div v-if="!waitDatas">
     <h1>Liste des clients</h1>
@@ -35,8 +41,10 @@
 </template>
 
 <script>
+import { TrinityRingsSpinner } from "epic-spinners";
 export default {
   name: "ClientListView",
+  components: { TrinityRingsSpinner },
   data: function () {
     return {
       waitDatas: Boolean,

@@ -1,12 +1,7 @@
 <template>
   <div v-if="waitDatas">
-    <trinity-rings-spinner
-      :animation-duration="1500"
-      :size="250"
-      color="#42b983"
-    />
+    <AnimationAttente />
   </div>
-
   <div v-if="!waitDatas">
     <p>{{ client }}</p>
     <hr />
@@ -18,10 +13,10 @@
   </div>
 </template>
 <script>
-import { TrinityRingsSpinner } from "epic-spinners";
+import AnimationAttente from "@/components/AnimationAttente.vue";
 export default {
   name: "DetailClientView",
-  components: { TrinityRingsSpinner },
+  components: { AnimationAttente },
   data: function () {
     return {
       waitDatas: Boolean,

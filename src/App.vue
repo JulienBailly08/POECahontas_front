@@ -3,6 +3,8 @@
     <router-link to="/">Login</router-link> |
     <router-link to="/clients">Liste clients</router-link>
   </nav>
+  <hr />
+
   <router-view />
 </template>
 

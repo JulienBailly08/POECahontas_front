@@ -1,11 +1,17 @@
 <template>
   <div class="login">
-    <form v-on:submit.prevent="(e) => tryLogin(e)">
+    <form v-on:submit.prevent="tryLogin">
       <p>Enregistrer vous</p>
       <label for="login">Nom d'utilisateur</label>
-      <input type="text" id="login" autocomplete />
-      <label for="password">Nom d'utilisateur</label>
-      <input type="password" id="password" autocomplete />
+      <input type="text" id="login" name="login" v-model="login" autocomplete />
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        v-model="password"
+        autocomplete
+      />
       <button type="submit">Se connecter</button>
     </form>
     <img alt="Vue logo" src="../assets/logo.png" />
@@ -15,18 +21,19 @@
 <script>
 export default {
   name: "LoginView",
+  data() {
+    return { login: "", password: "" };
+  },
   methods: {
-    tryLogin(event) {
-      const username = event.target.login.value;
-      const password = event.target.password.value;
-      if (username == "" || password == "") {
+    tryLogin() {
+      if (this.login == "" || this.password == "") {
         console.log("Do nothing");
       } else {
         // request vers back
         // Gestion du retour et inscription de l'objet User dans Vuex pour accès permissions
       }
-      console.log(username);
-      console.log(password);
+      console.log(this.login);
+      console.log(this.password);
     },
   },
 };

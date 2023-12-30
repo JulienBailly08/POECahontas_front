@@ -1,9 +1,16 @@
 import { createStore } from "vuex";
 
-export default createStore({
-  state: {},
+const store = createStore({
+  state: {
+    user: {
+      role: null,
+      token: null,
+    },
+  },
   getters: {},
   mutations: {},
   actions: {},
   modules: {},
 });
+
+export default store;

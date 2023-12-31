@@ -14,6 +14,8 @@
 </template>
 <script>
 import AnimationAttente from "@/components/AnimationAttente.vue";
+import envValues from "@/env";
+
 export default {
   name: "DetailClientView",
   components: { AnimationAttente },
@@ -25,7 +27,7 @@ export default {
   },
   mounted() {
     this.waitDatas = true;
-    fetch("https://jsonplaceholder.typicode.com/users/" + this.$route.params.id)
+    fetch(`${envValues.BASE_URL_API}/users/` + this.$route.params.id)
       .then((res) => res.json())
       .then((data) => {
         this.waitDatas = false;

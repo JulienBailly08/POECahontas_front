@@ -2,7 +2,7 @@
 
 En apesanteur le Musk du raton n'a pas d'odeur
 
-![Logo](src/assets/logo.png)
+![Logo](src/assets/img/logo.png)
 
 ## Project setup
 

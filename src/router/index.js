@@ -16,7 +16,7 @@ const routes = [
       import(
         /* webpackChunkName: "ClientsList" */ "../views/ClientsListView.vue"
       ),
-    //meta: { requireAuth: true, role: ["admin", "commercial"] },
+    meta: { requireAuth: true, role: ["admin", "commercial"] },
   },
   {
     path: "/detailClient/:id",
@@ -26,7 +26,7 @@ const routes = [
       import(
         /* webpackChunkName: "ClientsDetail" */ "../views/DetailClientView.vue"
       ),
-    //meta: { requireAuth: true, role: ["admin", "commercial"] },
+    meta: { requireAuth: true, role: ["admin", "commercial"] },
   },
 ];
 

@@ -14,16 +14,12 @@
       />
       <button type="submit">Se connecter</button>
     </form>
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <img src="../assets/img/logo.png" />
   </div>
 </template>
 
 <script>
-// @todo
-// import store from "@/store";
-// store.state.user.token = "azerf";
-// store.state.user.role = "admin";
-// console.log(store.state.user);
+import store from "@/store";
 export default {
   name: "LoginView",
   data() {
@@ -31,14 +27,18 @@ export default {
   },
   methods: {
     tryLogin() {
+      //Simulation retour info ok et stockage data dans singleton
+      store.state.user.token = "azerf";
+      store.state.user.role = "admin";
+      this.$router.push("/clients");
       if (this.login == "" || this.password == "") {
         console.log("Do nothing");
       } else {
         // request vers back
         // Gestion du retour et inscription de l'objet User dans Vuex pour accès permissions
       }
-      console.log(this.login);
-      console.log(this.password);
+      // console.log(this.login);
+      // console.log(this.password);
     },
   },
 };

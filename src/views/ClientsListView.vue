@@ -38,6 +38,8 @@
 
 <script>
 import AnimationAttente from "@/components/AnimationAttente.vue";
+import envValues from "@/env";
+
 export default {
   name: "ClientListView",
   components: { AnimationAttente },
@@ -49,7 +51,7 @@ export default {
   },
   mounted() {
     this.waitDatas = true;
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch(`${envValues.BASE_URL_API}/users`)
       .then((res) => res.json())
       .then((data) => {
         this.waitDatas = false;

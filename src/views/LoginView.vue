@@ -24,7 +24,6 @@
 // store.state.user.token = "azerf";
 // store.state.user.role = "admin";
 // console.log(store.state.user);
-
 export default {
   name: "LoginView",
   data() {

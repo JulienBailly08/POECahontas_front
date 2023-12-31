@@ -1,12 +1,14 @@
 <template>
-  <nav>
-    <router-link to="/">Login</router-link> |
-    <router-link to="/clients">Liste clients</router-link>
-  </nav>
-  <hr />
-
+  <MenuApp />
   <router-view />
 </template>
+
+<script>
+import MenuApp from "./components/MenuApp.vue";
+export default {
+  components: { MenuApp },
+};
+</script>
 
 <style>
 #app {
@@ -19,6 +21,9 @@
 
 nav {
   padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 nav a {

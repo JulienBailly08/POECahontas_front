@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import store from "@/store";
+import envValues from "@/env";
 
 const routes = [
   {
@@ -10,23 +11,41 @@ const routes = [
   },
   {
     path: "/clients",
-    name: "ClientsList",
+    name: "clientsList",
     // chargement du composant à l'activation => lazy loading
     component: () =>
       import(
         /* webpackChunkName: "ClientsList" */ "../views/ClientsListView.vue"
       ),
-    meta: { requireAuth: true, role: ["admin", "commercial"] },
+    meta: { requireAuth: true, role: `${envValues.role.commercial}` },
   },
   {
     path: "/detailClient/:id",
-    name: "ClientsDetail",
+    name: "clientsDetail",
 
     component: () =>
       import(
         /* webpackChunkName: "ClientsDetail" */ "../views/DetailClientView.vue"
       ),
-    meta: { requireAuth: true, role: ["admin", "commercial"] },
+    meta: { requireAuth: true, role: `${envValues.role.commercial}` },
+  },
+  {
+    path: "/gestion",
+    name: "gestion",
+
+    component: () =>
+      import(/* webpackChunkName: "ClientsDetail" */ "../views/AdminView.vue"),
+    meta: { requireAuth: true, role: `${envValues.role.admin}` },
+  },
+  {
+    path: "/planning",
+    name: "planning",
+
+    component: () =>
+      import(
+        /* webpackChunkName: "ClientsDetail" */ "../views/PlanningView.vue"
+      ),
+    meta: { requireAuth: true, role: `${envValues.role.lanceur}` },
   },
 ];
 
@@ -45,7 +64,7 @@ router.beforeEach((to, from, next) => {
     } else if (to.meta.role && to.meta.role.includes(store.state.user.role)) {
       next();
     } else {
-      alert("pas les droits");
+      alert("pas les droits mais on accède quand meme pour test");
       next();
     }
   }

@@ -1,7 +1,9 @@
 <template>
-  <div v-if="isLogged">
+  <div v-if="isLogged" v-bind:class="[role]">
     <nav>
-      <router-link to="/clients">Liste clients</router-link>
+      <router-link :to="{ name: 'clientsList' }">Liste clients</router-link>
+      <router-link :to="{ name: 'planning' }">Visualiser planning</router-link>
+      <router-link :to="{ name: 'gestion' }">Administration</router-link>
       <img src="../assets/icones/logout.png" @click="logOut" />
     </nav>
     <hr />
@@ -15,6 +17,7 @@ export default {
   data: function () {
     return {
       isLogged: false,
+      role: "",
     };
   },
   computed: {
@@ -26,8 +29,10 @@ export default {
     getToken(newValue) {
       if (newValue != null) {
         this.isLogged = true;
+        this.role = store.state.user.role;
       } else {
         this.isLogged = false;
+        this.role = "";
       }
     },
   },
@@ -45,5 +50,14 @@ export default {
 img {
   max-width: 35px;
   cursor: pointer;
+}
+.admin {
+  background-color: rgb(170, 95, 9);
+}
+.commercial {
+  background-color: rgb(245, 245, 8);
+}
+.lanceur {
+  background-color: rgb(212, 62, 62);
 }
 </style>

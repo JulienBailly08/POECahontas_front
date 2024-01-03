@@ -87,7 +87,7 @@ html {
     align-self: stretch;
 
     color:white;
-    height: 94vh;
+    height: 94.1vh;
     background-color: #4C599D;
     background-image: url("../assets/img/pattern.png");
     background-blend-mode: luminosity;

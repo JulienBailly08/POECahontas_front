@@ -6,7 +6,7 @@
         :to="{ name: 'clientsList' }"
         >Liste clients</router-link
       >
-      <router-link v-if="showIfRight('lanceur')" :to="{ name: 'planning' }"
+      <router-link v-if="showIfRight('commercial')" :to="{ name: 'planning' }"
         >Visualiser planning</router-link
       >
       <router-link v-if="showIfRight('admin')" :to="{ name: 'gestion' }"

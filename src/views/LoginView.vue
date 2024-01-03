@@ -29,8 +29,13 @@ export default {
     tryLogin() {
       //Simulation retour info ok et stockage data dans singleton
       store.state.user.token = "azerf";
-      store.state.user.role = "admin";
-      this.$router.push("/clients");
+      store.state.user.role = "commercial";
+      if (store.state.user.role == "lanceur") {
+        this.$router.push({ name: "planning" });
+      } else {
+        this.$router.push({ name: "clientsList" });
+      }
+
       if (this.login == "" || this.password == "") {
         console.log("Do nothing");
       } else {

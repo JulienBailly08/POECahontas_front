@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
 import store from "@/store";
+import envValues from "@/env";
 
 const routes = [
   {
@@ -16,7 +17,7 @@ const routes = [
       import(
         /* webpackChunkName: "ClientsList" */ "../views/ClientsListView.vue"
       ),
-    meta: { requireAuth: true, role: ["admin", "commercial"] },
+    meta: { requireAuth: true, role: `${envValues.role.commercial}` },
   },
   {
     path: "/detailClient/:id",
@@ -26,7 +27,7 @@ const routes = [
       import(
         /* webpackChunkName: "ClientsDetail" */ "../views/DetailClientView.vue"
       ),
-    meta: { requireAuth: true, role: ["admin", "commercial"] },
+    meta: { requireAuth: true, role: `${envValues.role.commercial}` },
   },
   {
     path: "/gestion",
@@ -34,7 +35,7 @@ const routes = [
 
     component: () =>
       import(/* webpackChunkName: "ClientsDetail" */ "../views/AdminView.vue"),
-    meta: { requireAuth: true, role: ["admin"] },
+    meta: { requireAuth: true, role: `${envValues.role.admin}` },
   },
   {
     path: "/planning",
@@ -44,7 +45,7 @@ const routes = [
       import(
         /* webpackChunkName: "ClientsDetail" */ "../views/PlanningView.vue"
       ),
-    meta: { requireAuth: true, role: ["admin", "commercial", "lanceur"] },
+    meta: { requireAuth: true, role: `${envValues.role.lanceur}` },
   },
 ];
 

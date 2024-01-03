@@ -26,7 +26,13 @@
           <td>{{ client.company.name }}</td>
           <td>Le statut</td>
           <td>
-            <router-link :to="`/detailClient/${client.id}`"
+            <router-link
+              :to="{
+                name: 'clientsDetail',
+                params: {
+                  id: `${client.id}`,
+                },
+              }"
               >Afficher détails</router-link
             >
           </td>

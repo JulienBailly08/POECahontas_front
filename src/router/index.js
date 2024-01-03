@@ -10,7 +10,7 @@ const routes = [
   },
   {
     path: "/clients",
-    name: "ClientsList",
+    name: "clientsList",
     // chargement du composant à l'activation => lazy loading
     component: () =>
       import(
@@ -20,13 +20,31 @@ const routes = [
   },
   {
     path: "/detailClient/:id",
-    name: "ClientsDetail",
+    name: "clientsDetail",
 
     component: () =>
       import(
         /* webpackChunkName: "ClientsDetail" */ "../views/DetailClientView.vue"
       ),
     meta: { requireAuth: true, role: ["admin", "commercial"] },
+  },
+  {
+    path: "/gestion",
+    name: "gestion",
+
+    component: () =>
+      import(/* webpackChunkName: "ClientsDetail" */ "../views/AdminView.vue"),
+    meta: { requireAuth: true, role: ["admin"] },
+  },
+  {
+    path: "/planning",
+    name: "planning",
+
+    component: () =>
+      import(
+        /* webpackChunkName: "ClientsDetail" */ "../views/PlanningView.vue"
+      ),
+    meta: { requireAuth: true, role: ["admin", "commercial", "lanceur"] },
   },
 ];
 
@@ -45,7 +63,7 @@ router.beforeEach((to, from, next) => {
     } else if (to.meta.role && to.meta.role.includes(store.state.user.role)) {
       next();
     } else {
-      alert("pas les droits");
+      alert("pas les droits mais on accède quand meme pour test");
       next();
     }
   }

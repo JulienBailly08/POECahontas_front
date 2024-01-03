@@ -29,7 +29,7 @@ export default {
     tryLogin() {
       //Simulation retour info ok et stockage data dans singleton
       store.state.user.token = "azerf";
-      store.state.user.role = "commercial";
+      store.state.user.role = "admin";
       if (store.state.user.role == "lanceur") {
         this.$router.push({ name: "planning" });
       } else {

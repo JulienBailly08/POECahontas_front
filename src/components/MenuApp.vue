@@ -1,9 +1,17 @@
 <template>
   <div v-if="isLogged" v-bind:class="[role]">
     <nav>
-      <router-link :to="{ name: 'clientsList' }">Liste clients</router-link>
-      <router-link :to="{ name: 'planning' }">Visualiser planning</router-link>
-      <router-link :to="{ name: 'gestion' }">Administration</router-link>
+      <router-link
+        v-if="showIfRight('commercial')"
+        :to="{ name: 'clientsList' }"
+        >Liste clients</router-link
+      >
+      <router-link v-if="showIfRight('lanceur')" :to="{ name: 'planning' }"
+        >Visualiser planning</router-link
+      >
+      <router-link v-if="showIfRight('admin')" :to="{ name: 'gestion' }"
+        >Administration</router-link
+      >
       <img src="../assets/icones/logout.png" @click="logOut" />
     </nav>
     <hr />
@@ -11,6 +19,7 @@
 </template>
 <script>
 import store from "@/store";
+import envValues from "@/env";
 
 export default {
   name: "MenuApp",
@@ -37,6 +46,12 @@ export default {
     },
   },
   methods: {
+    showIfRight(value) {
+      if (envValues.role[value].includes(this.role)) {
+        return true;
+      }
+      return false;
+    },
     logOut() {
       this.$router.push("/");
       store.state.user.role = null;
